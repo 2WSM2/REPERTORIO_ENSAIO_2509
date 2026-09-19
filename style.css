@@ -1,0 +1,263 @@
+/* ==========================================================================
+   1. VARIÁVEIS E RESET GLOBAL
+   ========================================================================== */
+:root {
+  --bg-dark: #121214;
+  --card-bg: #202024;
+  --card-item-bg: #29292e;
+  --border-color: #323238;
+  
+  --accent-color: #ff2e2e;
+  --accent-hover: #ff4d4d;
+  --text-main: #e1e1e6;
+  --text-muted: #a8a8b3;
+  --text-dim: #7c7c8a;
+  --chord-color: #ffffff;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  padding: 20px 10px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO & RODAPÉ
+   ========================================================================== */
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  color: var(--accent-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA E CARDS
+   ========================================================================== */
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 6px;
+}
+
+/* ==========================================================================
+   4. MÓDULO VOCAL (GRID)
+   ========================================================================== */
+.vocal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media (min-width: 600px) {
+  .vocal-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.vocal-item {
+  background: var(--card-item-bg);
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.vocal-item h3 {
+  color: var(--accent-color);
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.vocal-item p {
+  font-size: 0.85rem;
+  color: #c4c4cc;
+  margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   5. MENU DE NAVEGAÇÃO DE MÚSICAS (BOTÕES)
+   ========================================================================== */
+.song-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: var(--card-item-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  flex: 1 1 calc(50% - 8px);
+}
+
+@media (min-width: 600px) {
+  .btn {
+    flex: 1 1 auto;
+  }
+}
+
+.btn:hover {
+  background-color: var(--border-color);
+  color: #ffffff;
+}
+
+.btn.active {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-weight: 700;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(255, 46, 46, 0.4);
+}
+
+/* ==========================================================================
+   6. PLAYER DE VÍDEO RESPONSIVO
+   ========================================================================== */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #000000;
+}
+
+.video-container.mini {
+  margin-bottom: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ==========================================================================
+   7. CONTAINER DE CIFRA E SCROLL
+   ========================================================================== */
+.tab-container {
+  background-color: var(--bg-dark);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.tab-container h3 {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.tab-container h4 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.song-notes {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.chord-box {
+  background-color: #1a1a1e;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-color);
+  margin-bottom: 15px;
+}
+
+pre {
+  font-family: var(--font-mono);
+  background-color: #09090a;
+  color: var(--chord-color);
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 480px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: #121214;
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}

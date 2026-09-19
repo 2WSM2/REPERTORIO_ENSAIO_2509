@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensaio — Guia de Guitarra & Vocal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="main-header">
+    <div class="header-content">
+      <span class="badge">Repertório de Ensaio</span>
+      <h1>Guia de Ensaio — Guitarra & Vocal</h1>
+      <p class="subtitle">Afinações originais, cifras completas e covers de guitarra em vídeo</p>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container">
+    
+    <!-- MÓDULO VOCAL -->
+    <section class="card vocal-card">
+      <div class="card-header">
+        <span class="card-icon">🎤</span>
+        <h2>1. Aquecimento Vocal & Técnicas de Drive</h2>
+      </div>
+      
+      <div class="vocal-grid">
+        <article class="vocal-item">
+          <h3>Aquecimento Vocal Completo</h3>
+          <p>Exercícios para estender o alcance e proteger as cordas vocais antes de cantar.</p>
+          <div class="video-container mini">
+            <iframe 
+              src="https://www.youtube.com/embed/ccYEjUPNQ7w" 
+              title="Aquecimento Vocal Rápido - Apenas Exercícios" 
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </article>
+
+        <article class="vocal-item">
+          <h3>Técnica: Drive Vocal (Sem Machucar)</h3>
+          <p>Guia prático para aplicar drives e rasgados na voz com segurança no Rock.</p>
+          <div class="video-container mini">
+            <iframe 
+              src="https://www.youtube.com/embed/cdN3mcyjlhU" 
+              title="Drive Vocal Sem Prejudicar a Voz - Aula Explicativa" 
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MÓDULO GUITARRA E CIFRAS -->
+    <section class="card player-card">
+      <div class="card-header">
+        <span class="card-icon">🎸</span>
+        <h2>2. Repertório Integral & Cifras</h2>
+      </div>
+      <p class="section-desc">Selecione uma música abaixo para carregar o cover de guitarra e a cifra completa:</p>
+      
+      <!-- MENU DE BOTÕES (GERADO PELO JS) -->
+      <nav id="song-menu" class="song-buttons" aria-label="Seleção de Músicas"></nav>
+
+      <!-- PLAYER DE VÍDEO PRINCIPAL -->
+      <div class="video-container main-video">
+        <iframe 
+          id="youtube-player" 
+          src="" 
+          title="Guitar Cover" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- PAINEL DE CIFRA E TABLATURA -->
+      <article class="tab-container">
+        <h3 id="song-title" class="song-title"></h3>
+        <p id="song-notes" class="song-notes"></p>
+        
+        <div class="chord-box">
+          <h4>Diagramas e Posições dos Acordes</h4>
+          <pre id="chord-diagrams" class="chord-diagrams-display"></pre>
+        </div>
+
+        <div class="sheet-box">
+          <h4>Cifra Integral & Guia da Letra</h4>
+          <pre id="tab-display" class="tab-display"></pre>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="main-footer">
+    <p>Guia de Ensaio — Guitarra & Vocal 🎸🎤</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
