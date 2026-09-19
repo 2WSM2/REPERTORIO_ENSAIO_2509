@@ -357,55 +357,209 @@ A5 (Deixar soar com feedback final)`
 F5: 333xxx
 A5: 777xxx
 G5: 555xxx`,
-    tab: `[Afinação: Drop C (C G C F A D)]
+    tab: `[Afinação: Padrão (Am C F G)]
 
 [Intro]
-A5  F5  C5  G5 (x2)
+F   Am   G  (x2)
 
 [Verso 1]
-A5                     F5
-  You can strike me down, you can take my crown
-C5                     G5
-  You can develop a deadly weapon and point it at my head
-A5                     F5
-  You can burn my house, set it all ablaze
-C5                     G5
-  'Cause I'd still walk through the fire for you
-
-[Pré-Refrão]
-A5                     F5
-  So you can drag me through Hell
-C5                     G5
-  If it means I can hold your hand
-
-[Refrão]
-A5             F5             C5
-  You can throw me to the wolves
-                 G5
-Tomorrow I'll come back leader of the pack
-A5             F5             C5
-  Beat me black and blue
-                 G5
-Every scar will build my throne
-A5             F5
-  So go ahead and drive me insane
-C5             G5
-  'Cause I'm in love with the pain
-A5             F5             C5    G5
-  'Cause I'm in love with the pain... I will follow you
+F                                           Am              G
+My head is haunting me and my heart feels like a ghost
+F                                       Am              G
+I need to feel something, 'cause I'm still so far from home
+F                     
+Cross your heart and hope to die
+Am                        G               F     Am   G
+Promise me you'll never leave my side 
 
 [Verso 2]
-A5                     F5
-  You can call me names, you can play your games
-C5                     G5
-  You can spit in my face and leave me in the rain
-A5                     F5
-  You can break my bones, you can turn away
-C5                     G5
-  'Cause I'd still walk through the fire for you
+F                                               Am          G
+Show me what I can't see when the spark in your eyes is gone
+F                                  Am                G
+You've got me on my knees, I'm your one-man cult
+F                   
+Cross my heart and hope to die
+Am               G
+Promise you I'll never leave your side 
+
+[Pré-Refrão]
+Am                       F          G          Am
+'Cause I'm telling you, you're all I need  
+G            C           G          Am
+I promise you you're all I see
+Am                       F          G          Am
+'Cause I'm telling you, you're all I need  
+G        C
+I'll never leave
 
 [Refrão]
-A5             F5             C5
+             Am                         F
+So, you can drag me through hell
+             Am                   G
+If it meant I could hold your hand
+             Am                         F
+I will follow you, 'cause I'm under your spell
+             Am                   G
+And you can throw me to the flames
+             Am                     F    G
+I will follow you, I will follow you 
+
+[Verso 3]
+F                                      Am                 G
+Come sink into me and let me breathe you in
+F                                      Am           G
+I'll be your gravity, you be my oxygen
+F                   
+So dig two graves, 'cause when you die 
+Am              G                                 F
+I swear I'll be leaving by your side
+
+[Refrão]
+             Am                         F
+So, you can drag me through hell
+             Am                   G
+If it meant I could hold your hand
+             Am                         F
+I will follow you, 'cause I'm under your spell
+             Am                   G
+And you can throw me to the flames
+             Am                     F    G
+I will follow you, I will follow you`
+  },
+  {
+    id: "can-you-feel-my-heart",
+    title: "6. Can You Feel My Heart - BMTH",
+    notes: "Afinação Original: Drop B (B F# B E G# C#). Riff pesado sintetizado tocado com afinação bem grave na guitarra.",
+    videoId: "epji2J5Q5AA", // Guitar Cover
+    chords: `Em5 (Bm5): 222xxx
+C5:        10 10 10 xxx (10ª casa)
+G5:        555xxx
+D5:        000xxx`,
+    tab: `[Afinação: Padrão]
+
+[Intro / Riff Synth & Guitarra]
+C   Am   Em   G  (x2)
+
+[Verso 1]
+C                       Am
+Can you hear the silence?
+Em                    G
+Can you see the dark?
+C                     Am
+Can you fix the broken?
+Em               G
+Can you feel, can you feel my heart?
+
+[Verso 2]
+C                       Am
+Can you help the hopeless?
+Em                        G
+Well, I'm begging on my knees
+C                       Am
+Can you save my bastard soul?
+Em                 G
+Will you wait for me?
+
+C                       Am
+I'm sorry, brothers, so sorry, lover
+Em                        G
+Forgive me, father, I love you mother
+
+C
+Can you hear the silence?
+Am            
+Can you see the dark?
+Em                 
+Can you fix the broken?
+
+[Refrão]
+G                    C    Am   Em
+Can you feel my heart? 
+G                    C    Am   Em
+Can you feel my heart?
+
+[Ponte]
+C                               Am
+I'm scared to get close, and I hate being alone
+Em                              G
+I long for that feeling to not feel at all
+C                       Am
+The higher I get, the lower I sink
+Em                              G
+I can't drown my demons, they know how to swim`
+  }
+];
+
+class SongApp {
+  constructor(songs) {
+    this.songs = songs;
+    this.activeSongIndex = 0;
+
+    this.elements = {
+      menuContainer: document.getElementById('song-menu'),
+      songTitle: document.getElementById('song-title'),
+      songNotes: document.getElementById('song-notes'),
+      chordDiagrams: document.getElementById('chord-diagrams'),
+      tabDisplay: document.getElementById('tab-display'),
+      youtubePlayer: document.getElementById('youtube-player')
+    };
+  }
+
+  init() {
+    this.renderMenu();
+    this.loadSong(0);
+  }
+
+  renderMenu() {
+    const { menuContainer } = this.elements;
+    if (!menuContainer) return;
+
+    menuContainer.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+
+    this.songs.forEach((song, index) => {
+      const button = document.createElement('button');
+      button.className = 'btn';
+      button.dataset.index = index;
+      button.textContent = song.title.split(' - ')[0];
+      
+      button.addEventListener('click', () => this.loadSong(index));
+      fragment.appendChild(button);
+    });
+
+    menuContainer.appendChild(fragment);
+  }
+
+  loadSong(index) {
+    if (index < 0 || index >= this.songs.length) return;
+
+    this.activeSongIndex = index;
+    const song = this.songs[index];
+
+    this.updateActiveButton(index);
+
+    const { songTitle, songNotes, chordDiagrams, tabDisplay, youtubePlayer } = this.elements;
+
+    if (songTitle) songTitle.textContent = song.title;
+    if (songNotes) songNotes.innerHTML = `<strong>Afinação & Dicas:</strong> ${song.notes}`;
+    if (chordDiagrams) chordDiagrams.textContent = song.chords;
+    if (tabDisplay) tabDisplay.textContent = song.tab;
+    if (youtubePlayer) youtubePlayer.src = `https://www.youtube.com/embed/${song.videoId}`;
+  }
+
+  updateActiveButton(activeIndex) {
+    const buttons = this.elements.menuContainer?.querySelectorAll('.btn');
+    buttons?.forEach((btn, index) => {
+      btn.classList.toggle('active', index === activeIndex);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new SongApp(SONGS_DATABASE);
+  app.init();
+});
+             F5             C5
   You can throw me to the wolves
                  G5
 Tomorrow I'll come back leader of the pack
